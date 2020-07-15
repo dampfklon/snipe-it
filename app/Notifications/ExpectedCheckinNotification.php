@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Helpers\Helper;
 use App\Models\Setting;
 use App\Models\SnipeModel;
 use Illuminate\Bus\Queueable;
@@ -57,17 +58,18 @@ class ExpectedCheckinNotification extends Notification
      */
     public function toMail($params)
     {
-        $formatted_due = Carbon::parse($this->params->expected_checkin)->format('D,  M j, Y');
-        return (new MailMessage)
-            ->error()
-            ->subject('Reminder: '.$this->params->present()->name().' checkin deadline approaching')
-            ->line('Hi, '.$this->params->assignedto->first_name.' '.$this->params->assignedto->last_name)
-            ->greeting('An asset checked out to you is due to be checked back in on '.$formatted_due.'.')
-            ->line('Asset: '.$this->params->present()->name())
-            ->line('Serial: '.$this->params->serial)
-            ->line('Asset Tag: '.$this->params->asset_tag)
-            ->action('View Your Assets', route('view-assets'));
+        $settings = Setting::getSettings();
 
+        $message = (new MailMessage)->markdown('notifications.markdown.expected-checkin',
+            [
+                'date' => Helper::getFormattedDateObject($this->params->expected_checkin, 'date', false),
+                'asset' => $this->params->present()->name(),
+                'serial' => $this->params->serial,
+                'asset_tag' => $this->params->asset_tag
+            ])
+            ->subject(trans('mail.Expected_Checkin_Notification'), $this->params->present()->name());
+
+        return $message;
 
     }
 
