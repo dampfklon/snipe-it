@@ -60,7 +60,7 @@ class ExpectedCheckinAdminNotification extends Notification
             [
                 'assets'  => $this->assets,
             ])
-            ->subject('Expected asset checkin report');
+            ->subject(trans('mail.Expected_Checkin_Report'));
 
         return $message;
 
