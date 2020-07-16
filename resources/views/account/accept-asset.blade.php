@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    {{trans('general.accept', $item->present()->name())}}
+    {{trans('general.accept', ['name' => $item->present()->name()])}}
     @parent
 @stop
 
