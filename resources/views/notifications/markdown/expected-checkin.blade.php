@@ -1,5 +1,5 @@
 @component('mail::message')
-# {{ trans('mail.hello') }}  {{ $target->present()->fullName() }},
+# {{ trans('mail.hello') }},
 
 {{ trans('mail.Expected_Checkin_Date', ['date' => $date]) }}
 
