@@ -1,7 +1,7 @@
 @component('mail::message')
-# {{ trans('mail.hello') }},
+# {{ trans('mail.hello') }}  {{ $target->present()->fullName() }},
 
-{{ trans('mail.Expected_Checkin_Date', $date) }}
+{{ trans('mail.Expected_Checkin_Date', ['date' => $date]) }}
 
 @if ((isset($asset)) && ($asset!=''))
 {{ trans('mail.asset_name') }}: {{ $asset }}
