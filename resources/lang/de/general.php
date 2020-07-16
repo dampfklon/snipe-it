@@ -221,4 +221,9 @@
     'zip'  					=> 'Postleitzahl',
     'noimage'					=> 'Kein Bild hochgeladen oder kein Bild gefunden.',
     'token_expired'             => 'Ihre Sitzung ist abgelaufen. Bitte versuchen Sie es erneut.',
+    'accept'                => 'Erhalt bestätigen :asset',
+    'i_accept'              => 'Ich akzeptiere',
+    'i_decline'             => 'Ich lehne ab',
+    'sign_tos'              => 'Unterscheibe unten um zu den Nutzungsbedingungen zuzustimmen::',
+    'clear_signature'       => 'Unterschrift löschen'
     ];

@@ -68,4 +68,11 @@ return array(
     'welcome' => 'Wilkommen, :name',
     'welcome_to' => 'Willkommen bei :web!',
     'your_credentials' => 'Ihre Snipe-IT Anmeldedaten',
+    'Accessory_Checkin_Notification' => 'Zubehör zurückgenommen',
+    'Asset_Checkin_Notification' => 'Asset zurückgenommen',
+    'License_Checkin_Notification' => 'Lizenz zurückgenommen',
+    'Expected_Checkin_Report' => 'Expected asset checkin report',
+    'Expected_Checkin_Notification' => 'Erinnerung: :name Rückgabe Datum bevorstehend',
+    'Expected_Checkin_Date' => 'Das an dich ausgegebende Asset ist fällig zur Rückgabe am :date',
+    'your_assets' => 'An dich ausgegebene Assets anzeigen'
 );
