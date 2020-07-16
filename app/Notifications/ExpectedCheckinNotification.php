@@ -67,7 +67,7 @@ class ExpectedCheckinNotification extends Notification
                 'serial' => $this->params->serial,
                 'asset_tag' => $this->params->asset_tag
             ])
-            ->subject(trans('mail.Expected_Checkin_Notification'), $this->params->present()->name());
+            ->subject(trans('mail.Expected_Checkin_Notification', ['name' => $this->params->present()->name()]));
 
         return $message;
 
