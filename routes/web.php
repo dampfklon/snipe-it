@@ -343,6 +343,14 @@ Route::group(['middleware' => ['auth']], function () {
         [ 'as' => 'reports/unaccepted_assets', 'uses' => 'ReportsController@getAssetAcceptanceReport' ]
     );
     Route::get(
+        'reports/unaccepted_assets/{acceptanceId}/sent_reminder',
+        [ 'as' => 'reports/unaccepted_assets_sent_reminder', 'uses' => 'ReportsController@sentAssetAcceptanceReminder' ]
+    );
+    Route::delete(
+        'reports/unaccepted_assets/{acceptanceId}/delete',
+        [ 'as' => 'reports/unaccepted_assets_delete', 'uses' => 'ReportsController@deleteAssetAcceptance' ]
+    );
+    Route::get(
         'reports/export/unaccepted_assets',
         [ 'as' => 'reports/export/unaccepted_assets', 'uses' => 'ReportsController@exportAssetAcceptanceReport' ]
     );
