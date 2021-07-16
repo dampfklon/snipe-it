@@ -72,7 +72,7 @@ class ReportsController extends Controller
             trans('admin/accessories/general.remaining')
         );
         $header = array_map('trim', $header);
-        $rows[] = implode($header, ', ');
+        $rows[] = implode(', ', $header);
 
         // Row per accessory
         foreach ($accessories as $accessory) {
@@ -82,10 +82,10 @@ class ReportsController extends Controller
             $row[] = e($accessory->total);
             $row[] = e($accessory->remaining);
 
-            $rows[] = implode($row, ',');
+            $rows[] = implode(',', $row);
         }
 
-        $csv = implode($rows, "\n");
+        $csv = implode("\n", $rows);
         $response = Response::make($csv, 200);
         $response->header('Content-Type', 'text/csv');
         $response->header('Content-disposition', 'attachment;filename=report.csv');
@@ -355,7 +355,7 @@ class ReportsController extends Controller
         ];
 
         $header = array_map('trim', $header);
-        $rows[] = implode($header, ', ');
+        $rows[] = implode(', ', $header);
 
         // Row per license
         foreach ($licenses as $license) {
@@ -369,10 +369,10 @@ class ReportsController extends Controller
             $row[] = ($license->depreciation!='') ? '' : e($license->depreciation->name);
             $row[] = '"' . Helper::formatCurrencyOutput($license->purchase_cost) . '"';
 
-            $rows[] = implode($row, ',');
+            $rows[] = implode(',', $row);
         }
 
-        $csv      = implode($rows, "\n");
+        $csv      = implode("\n", $rows);
         $response = Response::make($csv, 200);
         $response->header('Content-Type', 'text/csv');
         $response->header('Content-disposition', 'attachment;filename=report.csv');
@@ -896,7 +896,7 @@ class ReportsController extends Controller
         ];
 
         $header = array_map('trim', $header);
-        $rows[] = implode($header, ',');
+        $rows[] = implode(',', $header);
 
         foreach ($assetMaintenances as $assetMaintenance) {
             $row   = [ ];
@@ -915,11 +915,11 @@ class ReportsController extends Controller
             }
             $row[]  = $improvementTime;
             $row[]  = trans('general.currency') . Helper::formatCurrencyOutput($assetMaintenance->cost);
-            $rows[] = implode($row, ',');
+            $rows[] = implode(',', $row);
         }
 
         // spit out a csv
-        $csv      = implode($rows, "\n");
+        $csv      = implode("\n", $rows);
         $response = Response::make($csv, 200);
         $response->header('Content-Type', 'text/csv');
         $response->header('Content-disposition', 'attachment;filename=report.csv');
@@ -1049,7 +1049,7 @@ class ReportsController extends Controller
         ];
 
         $header = array_map('trim', $header);
-        $rows[] = implode($header, ',');
+        $rows[] = implode(',', $header);
 
         foreach ($assetsForReport as $item) {
             $row    = [ ];
@@ -1058,11 +1058,11 @@ class ReportsController extends Controller
             $row[]  = str_replace(',', '', e($item['assetItem']->name));
             $row[]  = str_replace(',', '', e($item['assetItem']->asset_tag));
             $row[]  = str_replace(',', '', e(($item['acceptance']->assignedTo) ? $item['acceptance']->assignedTo->present()->name() : trans('admin/reports/general.deleted_user')));
-            $rows[] = implode($row, ',');
+            $rows[] = implode(',', $row);
         }
 
         // spit out a csv
-        $csv      = implode($rows, "\n");
+        $csv      = implode("\n", $rows);
         $response = Response::make($csv, 200);
         $response->header('Content-Type', 'text/csv');
         $response->header('Content-disposition', 'attachment;filename=report.csv');
