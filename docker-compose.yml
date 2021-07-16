@@ -10,6 +10,8 @@ services:
     - 8000:80
     volumes:
     - ./logs:/var/www/html/storage/logs
+    - .:/var/www/html
+    - snipe-vol:/var/lib/snipeit
     depends_on:
     - mariadb
     - redis
@@ -20,6 +22,8 @@ services:
 
   mariadb:
     image: mariadb:latest
+    ports:
+      - 43306:3306
     volumes:
     - db:/var/lib/mysql
     env_file:
@@ -43,6 +47,7 @@ services:
 
 volumes:
   db: {}
+  snipe-vol: {}
 
 networks:
   snipeit-backend: {}

@@ -339,7 +339,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get(
-        'reports/unaccepted_assets',
+        'reports/unaccepted_assets/{deleted?}',
         [ 'as' => 'reports/unaccepted_assets', 'uses' => 'ReportsController@getAssetAcceptanceReport' ]
     );
     Route::get(
@@ -351,7 +351,7 @@ Route::group(['middleware' => ['auth']], function () {
         [ 'as' => 'reports/unaccepted_assets_delete', 'uses' => 'ReportsController@deleteAssetAcceptance' ]
     );
     Route::post(
-        'reports/unaccepted_assets', 'ReportsController@postAssetAcceptanceReport');
+        'reports/unaccepted_assets/{deleted?}', 'ReportsController@postAssetAcceptanceReport');
 });
 
 Route::get(
